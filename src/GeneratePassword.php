@@ -17,13 +17,26 @@ class GeneratePassword{
 
     public static function random(int $password_length, string $strength = "high") : string
     {
-     
-        for ($i=0; $i < $password_length; $i++) { 
-            # code...
-            $password[$i] = chr(rand(33, 126));
+
+        // Step 1: Ensure minimum character types
+        $uppercase = chr(rand(65, 90)); // A-Z
+        $lowercase = chr(rand(97, 122)); // a-z
+        $digit = chr(rand(48, 57)); // 0-9
+        $special = chr(rand(33, 47)); // Special chars like ! " # $ % & ' ( ) * + , - . /
+
+        // Step 2: Prepare password array with guaranteed characters
+        $password = [$uppercase, $lowercase, $digit, $special];
+        
+        // Step 3: Fill the rest of the password with random characters
+        for ($i = 4; $i < $password_length; $i++) { 
+            $password[] = chr(rand(33, 126)); // Random visible ASCII chars
         }
 
-        return  implode('', $password);
+        // Step 4: Shuffle to randomize positions
+        shuffle($password);
+
+        // Step 5: Return the final password
+        return implode('', $password);
         
     }
 
