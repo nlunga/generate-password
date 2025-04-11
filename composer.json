@@ -1,0 +1,20 @@
+{
+    "name": "nnil/generate-password",
+    "description": "This package is designed to generate a safe password",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^12.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nnil\\GeneratePassword\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "nnil"
+        }
+    ],
+    "require": {}
+}
